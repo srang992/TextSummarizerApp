@@ -14,7 +14,7 @@ def main(page: ft.Page):
         primary_swatch=ft.colors.BLUE
     )
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.scroll = ft.ScrollMode.AUTO
 
     full_text_field = ft.Ref[ft.TextField]()
     token_field = ft.Ref[ft.TextField]()
@@ -109,7 +109,6 @@ def main(page: ft.Page):
 ft.app(
     target=main,
     view=ft.WEB_BROWSER,
-    port=8600,
     assets_dir="assets",
     use_color_emoji=True,
 )
