@@ -109,7 +109,7 @@ def main(page: ft.Page):
 ft.app(
     target=main,
     view=ft.WEB_BROWSER,
-    port=8900,
+    port=9500,
     assets_dir="assets",
     use_color_emoji=True,
 )
