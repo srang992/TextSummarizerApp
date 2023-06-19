@@ -7,14 +7,14 @@ from langchain.chains.summarize import load_summarize_chain
 
 def main(page: ft.Page):
     page.fonts = {
-        "Courgette": "assets/fonts/Courgette-Regular.ttf",
-        "Alkatra": "assets/fonts/Alkatra-Regular.ttf"
+        "Courgette": "fonts/Courgette-Regular.ttf",
+        "Alkatra": "fonts/Alkatra-Regular.ttf"
     }
     page.theme = ft.Theme(
         primary_swatch=ft.colors.BLUE
     )
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.scroll = ft.ScrollMode.AUTO
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
 
     full_text_field = ft.Ref[ft.TextField]()
     token_field = ft.Ref[ft.TextField]()
@@ -58,8 +58,8 @@ def main(page: ft.Page):
         ),
         ft.Divider(color=ft.colors.TRANSPARENT, height=5),
         ft.TextField(
-            min_lines=12,
-            max_lines=12,
+            min_lines=8,
+            max_lines=8,
             border_color=ft.colors.GREY_400,
             focused_border_color=ft.colors.BLUE,
             hint_text="Enter Text",
@@ -109,7 +109,7 @@ def main(page: ft.Page):
 ft.app(
     target=main,
     view=ft.WEB_BROWSER,
-    port=9500,
+    port=8550,
     assets_dir="assets",
     use_color_emoji=True,
 )
