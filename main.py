@@ -58,8 +58,8 @@ def main(page: ft.Page):
         ),
         ft.Divider(color=ft.colors.TRANSPARENT, height=5),
         ft.TextField(
-            min_lines=8,
-            max_lines=8,
+            min_lines=10,
+            max_lines=10,
             border_color=ft.colors.GREY_400,
             focused_border_color=ft.colors.BLUE,
             hint_text="Enter Text",
