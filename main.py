@@ -3,6 +3,8 @@ from langchain import OpenAI
 from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
+from ionicons_python.extra_icons import chatgpt_icon
+from custom_flet.components.custom_icon import CustomIcon
 
 
 def main(page: ft.Page):
@@ -33,6 +35,10 @@ def main(page: ft.Page):
             page.snack_bar = ft.SnackBar(ft.Text("Enter Token First!", font_family="Alkatra"), open=True)
             page.update()
             return
+        elif not token_field.current.value.startswith("sk-"):
+            page.snack_bar = ft.SnackBar(ft.Text("Invalid Token!", font_family="Alkatra"), open=True)
+            page.update()
+            return
         else:
             page.splash = ft.ProgressBar()
             submit_button.current.disabled = True
@@ -50,16 +56,25 @@ def main(page: ft.Page):
             page.update()
 
     page.add(
-        ft.Text(
-            "🤖 Text Summarizer App",
-            size=32,
-            font_family="Courgette",
-            text_align=ft.TextAlign.CENTER,
+        ft.Row(
+            [
+                CustomIcon(
+                    icon=chatgpt_icon,
+                    size=36,
+                ),
+                ft.Text(
+                    "Text Summarizer App",
+                    size=32,
+                    font_family="Courgette",
+                    text_align=ft.TextAlign.CENTER,
+                ),
+            ],
+            alignment=ft.MainAxisAlignment.CENTER
         ),
         ft.Divider(color=ft.colors.TRANSPARENT, height=5),
         ft.TextField(
-            min_lines=10,
-            max_lines=10,
+            min_lines=14,
+            max_lines=14,
             border_color=ft.colors.GREY_400,
             focused_border_color=ft.colors.BLUE,
             hint_text="Enter Text",
@@ -76,7 +91,7 @@ def main(page: ft.Page):
         ft.TextField(
             border_color=ft.colors.GREY_400,
             focused_border_color=ft.colors.BLUE,
-            hint_text="Enter OpenAI Token",
+            hint_text="Enter OpenAI Secret Key",
             hint_style=ft.TextStyle(
                 font_family="Courgette"
             ),
@@ -111,5 +126,4 @@ ft.app(
     view=ft.WEB_BROWSER,
     port=8550,
     assets_dir="assets",
-    use_color_emoji=True,
 )
