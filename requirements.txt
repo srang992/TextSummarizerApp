@@ -1,4 +1,5 @@
 flet
-langchain
+langchain==0.0.202
 openai
 tiktoken
+websocket-client==1.5.1
